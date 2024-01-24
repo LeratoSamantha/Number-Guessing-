@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Number Guessing Game</title>
+</head>
+<body>
+    <h1>Number Guessing Game</h1>
+    <p>Try to guess the secret number between 0 and 99:</p>
+    
+    <input type="number" id="userGuess" placeholder="Enter your guess number" min="0" max="99">
+    <button onclick="checkGuess()">Submit Guess</button>
+    
+    <p id="feedback"></p>
+    <p id="output"></p>
+    
+    <script>
+        // Generate a random secret number between 0 and 99
+        const secretNumber = Math.floor(Math.random() * 100);
+        
+        function checkGuess() {
+            const userGuess = parseInt(document.getElementById('userGuess').value);
+            const feedbackElement = document.getElementById('feedback');
+            const outputElement = document.getElementById('output');
+            
+            if (userGuess === secretNumber) {
+                feedbackElement.textContent = ' You got it right';
+            } else if (userGuess < secretNumber) {
+                feedbackElement.textContent = 'Your guess is too low. ';
+            } else {
+                feedbackElement.textContent = 'Your guess is too high. ';
+            }
+            
+            outputElement.textContent = `The secret number was: ${secretNumber}`;
+        }
+    </script>
+</body>
+</html>
